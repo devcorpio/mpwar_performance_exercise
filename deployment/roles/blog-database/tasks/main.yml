@@ -1,0 +1,2 @@
+- name: "create database"
+  shell: mysql -u root --password=root mpwar_performance_blog < /var/www/html/blog/current/application/resources/dataset.sql

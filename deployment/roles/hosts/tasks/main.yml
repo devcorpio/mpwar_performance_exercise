@@ -1,0 +1,7 @@
+- lineinfile:
+    path: /etc/hosts
+    regexp: '^127\.0\.0\.1 mysql'
+    line: '127.0.0.1 mysql'
+    owner: root
+    group: root
+    mode: 0644
