@@ -1,0 +1,10 @@
+- name: Deploy blog at amazon
+  hosts: webservers
+  vars:
+    ansistrano_deploy_to: "/var/www/html/blog" # Base path to deploy to.
+    ansistrano_deploy_via: "git"
+    ansistrano_git_repo: https://github.com/devcorpio/mpwar_performance_exercise.git
+    ansistrano_git_branch: master
+    ansistrano_keep_releases: 3
+  roles:
+    - { role: carlosbuenosvinos.ansistrano-deploy }
