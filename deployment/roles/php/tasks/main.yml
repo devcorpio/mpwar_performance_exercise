@@ -1,5 +1,9 @@
 - name: "php"
-  yum: name={{ item }} enablerepo=epel,remi,remi-php71 state=installed
+  yum: name={{ item }} state=installed
   with_items:
-    - php
-    - php71-php-pdo
+    - php71u
+    - php71u-cli
+    - php71u-json
+    - php71u-pdo
+    - php71u-mysqlnd
+
