@@ -12,6 +12,7 @@
     - composer
     - git
     - hosts
+    - seboolean
     - { role: geerlingguy.mysql }
     - { role: carlosbuenosvinos.ansistrano-deploy }
     - blog-database
