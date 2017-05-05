@@ -1,2 +1,2 @@
 - name: "create database"
-  shell: mysql -u root --password=root mpwar_performance_blog < /var/www/html/blog/current/application/resources/dataset.sql
+  shell: mysql -h ec2-54-171-169-155.eu-west-1.compute.amazonaws.com -u root --password=root mpwar_performance_blog < /var/www/html/blog/current/application/resources/dataset.sql

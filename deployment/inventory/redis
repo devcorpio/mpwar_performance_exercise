@@ -1,0 +1,2 @@
+[redis]
+ec2-176-34-134-152.eu-west-1.compute.amazonaws.com ansible_ssh_user=centos ansible_ssh_private_key_file=keys/mpwar_amazon.pem
