@@ -26,5 +26,6 @@
     - git
     - hosts
     - seboolean
+    - { role: geerlingguy.nodejs }
     - { role: carlosbuenosvinos.ansistrano-deploy }
     - blog-database

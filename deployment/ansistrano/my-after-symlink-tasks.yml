@@ -1,3 +1,7 @@
 - composer:
     command: install
     working_dir: /var/www/html/blog/current/application
+- name: "npm install"
+  shell: cd /var/www/html/blog/current/application && npm install
+- name: "npm concat"
+  shell: cd /var/www/html/blog/current/application && npm concat
