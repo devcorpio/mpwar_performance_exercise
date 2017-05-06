@@ -1,0 +1,11 @@
+{
+  "name": "practica_performance",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "concat": "concat -o web/assets/dist/bundle.js web/assets/components/jquery/dist/jquery.min.js web/assets/components/bootstrap/dist/js/bootstrap.min.js"
+  },
+  "devDependencies": {
+    "concat": "^1.0.3"
+  }
+}
