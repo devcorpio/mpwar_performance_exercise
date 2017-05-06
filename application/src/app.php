@@ -19,7 +19,10 @@ $app->register(new ServiceControllerServiceProvider());
 $app->register(new DoctrineServiceProvider);
 $app->register(new DoctrineOrmServiceProvider);
 
-$app['redis'] = new Predis\Client();
+$app['redis'] = new Predis\Client([
+    'host' => 'redis',
+    'database' => 0
+]);
 $app['session.storage.handler'] = new Handler\RedisSessionHandler($app['redis']);
 
 return $app;
