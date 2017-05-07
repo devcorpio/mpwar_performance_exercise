@@ -5,3 +5,10 @@
     owner: root
     group: root
     mode: 0644
+- lineinfile:
+    path: /etc/hosts
+    regexp: '^176\.34\.134\.152 redis'
+    line: '176.34.134.152 redis'
+    owner: root
+    group: root
+    mode: 0644
