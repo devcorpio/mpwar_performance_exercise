@@ -6,4 +6,5 @@
     - php71u-json
     - php71u-pdo
     - php71u-mysqlnd
+    - php71u-xml
 
