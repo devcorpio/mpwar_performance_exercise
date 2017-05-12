@@ -14,3 +14,5 @@ $app->register(new Sorien\Provider\DoctrineProfilerServiceProvider());
 
 $app['profiler.cache_dir'] 			= __DIR__ . '/../../var/cache/profiler';
 $app['profiler.mount_prefix'] 		= '/_profiler';
+
+$app['cdn'] = '';
