@@ -9,7 +9,7 @@ $app['db.options'] = [
     "driver"    => "pdo_mysql",
     "host"      => 'mysql',
     "user"      => 'root',
-    "password"  => 'root',
+    "password"  => '',
     "dbname"    => 'mpwar_performance_blog',
     "charset"   => "utf8"
 ];
@@ -24,3 +24,5 @@ $app['orm.em.options'] = [
         ],
     ]
 ];
+
+$app['cdn'] = 'https://dj8cq2g93z9hx.cloudfront.net';
