@@ -1,0 +1,25 @@
+- name: install pygpgme
+  yum:
+    name: pygpgme
+    state: present
+- name: add repo blackfire
+  shell: wget -O - "http://packages.blackfire.io/fedora/blackfire.repo" | sudo tee /etc/yum.repos.d/blackfire.repo
+- lineinfile:
+    path: /etc/yum.repos.d/blackfire.repo
+    regexp: '^repo_gpgcheck=1'
+    line: 'repo_gpgcheck=0'
+    owner: root
+    group: root
+    mode: 0644
+- name: install blackfire agent
+  yum:
+    name: blackfire-agent
+    state: present
+- name: install blackfire php probe
+  yum:
+    name: blackfire-php
+    state: present
+- name: "restart apache"
+  service: name=httpd state=restarted
+
+

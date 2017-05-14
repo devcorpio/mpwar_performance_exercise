@@ -29,3 +29,5 @@
     - { role: geerlingguy.nodejs }
     - { role: carlosbuenosvinos.ansistrano-deploy }
     - blog-database
+    - wget
+    - blackfire
