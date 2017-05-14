@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Performance\Domain\UseCase\EditArticle;
 use Performance\Domain\UseCase\ReadArticle;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Predis\Client as PredisClient;
 
 class EditArticleController
 {
@@ -37,12 +38,18 @@ class EditArticleController
      */
     private $session;
 
-    public function __construct(\Twig_Environment $templating, UrlGeneratorInterface $url_generator, EditArticle $useCase, ReadArticle $readArticle, SessionInterface $session) {
+    /**
+     * @var PredisClient
+     */
+    private $cache;
+
+    public function __construct(\Twig_Environment $templating, UrlGeneratorInterface $url_generator, EditArticle $useCase, ReadArticle $readArticle, SessionInterface $session, PredisClient $cache) {
         $this->template = $templating;
         $this->url_generator = $url_generator;
         $this->readArticle = $readArticle;
         $this->useCase = $useCase;
         $this->session = $session;
+        $this->cache = $cache;
     }
 
     public function get($article_id)
@@ -62,6 +69,7 @@ class EditArticleController
         $content   = $request->request->get('content');
 
         $this->useCase->execute($article, $title, $content);
+        $this->cache->del($article);
 
         return new RedirectResponse($this->url_generator->generate('article', ['article_id' => $request->get('article_id')]));
     }
