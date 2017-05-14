@@ -25,4 +25,15 @@ $app['redis'] = new Predis\Client([
 ]);
 $app['session.storage.handler'] = new Handler\RedisSessionHandler($app['redis']);
 
+
+$app->register(new Predis\Silex\ClientsServiceProvider(), [
+    'predis.clients' => [
+        'cache' => [
+            'host' => 'redis',
+            'database' => 1,
+        ],
+    ]
+]);
+
+
 return $app;
