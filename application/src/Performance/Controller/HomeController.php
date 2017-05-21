@@ -32,6 +32,20 @@ class HomeController
     public function get()
     {
         $articles = $this->useCase->execute();
-        return new Response($this->template->render('home.twig', ['articles' => $articles]));
+        $articlesGlobalTopRanking = $this->cache->zrevrange('globalranking', 0, 4);
+
+        return new Response($this->template->render('home.twig', [
+            'articles' => $articles,
+            'articlesGlobalRanking' => $this->unserializeRanking($articlesGlobalTopRanking)
+        ]));
+    }
+
+    public function unserializeRanking($ranking)
+    {
+        $ranking = array_map(function($r) {
+            return unserialize($r);
+        }, $ranking);
+
+        return $ranking;
     }
 }

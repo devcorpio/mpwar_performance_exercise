@@ -2,20 +2,42 @@
 	{% include 'header.twig' %}
 	<body>
 		<div class="container">
-			{% for article in articles %}
-				<h1><a href="{{ path('article', {article_id: article.id}) }}">{{ article.title | title }}</a></h1>
-				<h3>by {{ article.author.username }}, on {{ article.date | date("d/m/Y H:i") }}</h3>
-				<p>
-				{% if article.content | length > 100 %}
-					{{ article.content | slice(0,100) }}
-					<a href="{{ path('article', {article_id: article.id}) }}">more&hellip;</a>
+			<div class="col-md-3">
+				{% for article in articles %}
+					<h1><a href="{{ path('article', {article_id: article.id}) }}">{{ article.title | title }}</a></h1>
+					<h3>by {{ article.author.username }}, on {{ article.date | date("d/m/Y H:i") }}</h3>
+					<p>
+						{% if article.content | length > 100 %}
+							{{ article.content | slice(0,100) }}
+							<a href="{{ path('article', {article_id: article.id}) }}">more&hellip;</a>
+						{% else %}
+							{{ article.content }}
+						{% endif %}
+					</p>
 				{% else %}
-						{{ article.content }}
-				{% endif %}
-				</p>
-			{% else %}
-				<h1>There are no articles to show</h1>
-			{% endfor %}
+					<h1>There are no articles to show</h1>
+				{% endfor %}
+			</div>
+			<div class="col-md-3">
+				<h2>Global ranking (TOP 5)</h2>
+                {% for article in articlesGlobalRanking %}
+					<h1><a href="{{ path('article', {article_id: article.id}) }}">{{ article.title | title }}</a></h1>
+					<h3>by {{ article.author.username }}, on {{ article.date | date("d/m/Y H:i") }}</h3>
+					<p>
+                        {% if article.content | length > 100 %}
+                            {{ article.content | slice(0,100) }}
+							<a href="{{ path('article', {article_id: article.id}) }}">more&hellip;</a>
+                        {% else %}
+                            {{ article.content }}
+                        {% endif %}
+					</p>
+                {% else %}
+					<h1>There are no articles to show in global ranking</h1>
+                {% endfor %}
+			</div>
+			<div class="col-md-3">
+				<h2>My ranking (TOP 5)</h2>
+			</div>
 		</div>
 
         {% include 'footer.twig' %}

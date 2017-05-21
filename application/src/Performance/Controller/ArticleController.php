@@ -32,17 +32,19 @@ class ArticleController
 
     public function get($article_id)
     {
-        $article = unserialize($this->cache->get($article_id));
-
-        if (empty($article)) {
+        if (!($article = $this->cache->get($article_id))) {
             $article = $this->useCase->execute($article_id);
             $this->cache->set($article_id, serialize($article));
+        } else {
+            $article = unserialize($article);
         }
 
         if (!$article) {
             $this->cache->del($article_id);
             throw new HttpException(404, "Article $article_id does not exist.");
         }
+
+        $this->cache->zincrby('globalranking', 1, serialize($article));
 
         return new Response($this->template->render('article.twig', ['article' => $article]));
     }
