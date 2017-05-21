@@ -37,6 +37,20 @@
 			</div>
 			<div class="col-md-3">
 				<h2>My ranking (TOP 5)</h2>
+                {% for article in articlesAuthRanking %}
+					<h1><a href="{{ path('article', {article_id: article.id}) }}">{{ article.title | title }}</a></h1>
+					<h3>by {{ article.author.username }}, on {{ article.date | date("d/m/Y H:i") }}</h3>
+					<p>
+                        {% if article.content | length > 100 %}
+                            {{ article.content | slice(0,100) }}
+							<a href="{{ path('article', {article_id: article.id}) }}">more&hellip;</a>
+                        {% else %}
+                            {{ article.content }}
+                        {% endif %}
+					</p>
+                {% else %}
+					<h1>There are no articles to show in logged ranking</h1>
+                {% endfor %}
 			</div>
 		</div>
 
