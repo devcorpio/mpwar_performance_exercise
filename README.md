@@ -17,5 +17,8 @@ El dominio para entrar a la web via loadbalancer es:
 http://practicaperformance-341312800.eu-west-1.elb.amazonaws.com/blog/current/application/web/
 
 El archivo para hacer los deploy en amazon lo saco, porque creo que no debería estar por seguridad,
-si lo quisieses para hacer pruebas me lo pides. 
+si lo quisieses para hacer pruebas me lo pides.
 
+Perfil público blackfire:
+
+https://blackfire.io/profiles/237b2849-4d1c-44fa-bf0e-20b8c4f24f4d/graph
